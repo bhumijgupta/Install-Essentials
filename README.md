@@ -19,6 +19,19 @@ wget https://raw.githubusercontent.com/bhumijgupta/Install-Essentials/master/ess
 bash essentials.sh
 ```
 
+## Packages supported
+* Git
+* pip3
+* GCC/G++ compiler
+* Google Chrome
+* Spotify
+* VSCode
+* Postman
+* MongoDB
+* NodeJS
+* VLC
+* Terminator
+
 ## License
 
 ![GitHub](https://img.shields.io/github/license/bhumijgupta/huffman-compression-library)
