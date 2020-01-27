@@ -1,7 +1,7 @@
 # Install Essentials
 > Install Essentials is a sweet little bash script that install all the essentials I need to set up my new computer.
 
-It is a life saver and saves you from all the manual labour of installing the familiar software and setup your devenvironment.
+It is a life saver script and saves you from all the manual labour of installing the familiar software and setup your devenvironment.
 
 ## Features
 * Easy to customise
@@ -12,7 +12,7 @@ It is a life saver and saves you from all the manual labour of installing the fa
 ## Usage
 1. Download the script
 ```bash
-wget
+wget https://raw.githubusercontent.com/bhumijgupta/Install-Essentials/master/essentials.sh
 ```
 2. Run the script
 ```bash
