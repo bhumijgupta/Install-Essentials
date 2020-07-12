@@ -174,6 +174,26 @@ case $input in
  ;;
 esac
 
+
+read -r -p $'\nInstall Docker? [Y/n] ' input
+input=${input:-Y}
+case $input in
+    [yY][eE][sS]|[yY])
+    printf "\n\033[0;32mInstalling Docker\033[0m\n"    
+    sudo apt install docker.io
+    sudo systemctl start docker
+    sudo systemctl enable docker
+    docker --version
+        ;;
+    [nN][oO]|[nN])
+    printf "\n\033[0;37m Skipping Docker\033[0m\n"
+       ;;
+    *)
+ printf "\n\033[0;31mInvalid input...\033[0m\n"
+ exit 1
+ ;;
+esac
+
 read -r -p $'\nInstall Terminator? [Y/n] ' input
 input=${input:-Y}
 case $input in

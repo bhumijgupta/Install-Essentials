@@ -39,6 +39,7 @@ bash essentials.sh
 - MongoDB
 - NodeJS
 - VLC
+- Docker
 - Terminator
 
 See your essential package missing? Open an [issue](https://github.com/bhumijgupta/Install-Essentials/issues/new) or just send a pull request.
