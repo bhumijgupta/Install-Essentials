@@ -13,10 +13,11 @@ It is a time saver script and saves you from all the manual labour of installing
 
 ## Usage
 
-### Using cURL (preferred)
+### Using cURL
 
 ```bash
-curl -L https://bit.ly/ubuntu-essentials | bash
+curl -L https://bit.ly/ubuntu-essentials > essentials.sh
+bash essentials.sh
 ```
 
 ### Using wget
