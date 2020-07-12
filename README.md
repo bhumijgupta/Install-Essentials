@@ -1,40 +1,50 @@
 # Install Essentials
-> Install Essentials is a sweet little bash script that install all the essentials I need to set up my new computer.
 
-It is a life saver script and saves you from all the manual labour of installing the familiar software and setup your devenvironment.
+> Install Essentials is a sweet little bash script that install all the essentials I need to set up my fresh Ubuntu install.
+
+It is a time saver script and saves you from all the manual labour of installing the familiar software and setup your dev environment.
 
 ## Features
-* Easy to customise
-* Colored outputs
-* Choose to install packages/software you need
-* Saves time
+
+- Easy to customise
+- Colored outputs
+- Choose to install packages/software you need
+- Saves time (and peace of mind)
 
 ## Usage
-1. Download the script
+
+### Using cURL (preferred)
+
+```bash
+curl -L https://bit.ly/ubuntu-essentials | bash
+```
+
+### Using wget
+
 ```bash
 wget https://raw.githubusercontent.com/bhumijgupta/Install-Essentials/master/essentials.sh
-```
-2. Run the script
-```bash
 bash essentials.sh
 ```
 
 ## Packages supported
-* Git
-* pip3
-* GCC/G++ compiler
-* Google Chrome
-* Spotify
-* VSCode
-* Postman
-* MongoDB
-* NodeJS
-* VLC
-* Terminator
+
+- Git
+- pip3
+- GCC/G++ compiler
+- Google Chrome
+- Spotify
+- VSCode
+- Postman
+- MongoDB
+- NodeJS
+- VLC
+- Terminator
+
+See your essential package missing? Open an [issue](https://github.com/bhumijgupta/Install-Essentials/issues/new) or just send a pull request.
 
 ## License
 
-![GitHub](https://img.shields.io/github/license/bhumijgupta/huffman-compression-library)
+![GitHub](https://img.shields.io/github/license/bhumijgupta/Install-Essentials)
 
 This library is licensed under MIT License. The license file can be found [here](LICENSE)
 

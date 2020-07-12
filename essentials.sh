@@ -4,6 +4,7 @@ printf "\n\033[0;32mUpgrading Packages\033[0m\n"
 sudo apt upgrade -y
 
 read -r -p $'\nInstall git? [Y/n] ' input
+input=${input:-Y}
 case $input in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling git\033[0m\n"
@@ -19,6 +20,7 @@ case $input in
 esac
 
 read -r -p $'\nInstall pip for python 3? [Y/n] ' input
+input=${input:-Y}
 case $input in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling pip3\033[0m\n"
@@ -34,6 +36,7 @@ case $input in
 esac
 
 read -r -p $'\nInstall C/C++ compiler? [Y/n] ' input
+input=${input:-Y}
 case $input in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling C/C++ compiler\033[0m\n"    
@@ -49,6 +52,7 @@ case $input in
 esac
 
 read -r -p $'\nInstall Chrome? [Y/n] ' input
+input=${input:-Y}
 case $input in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling Chrome\033[0m\n"    
@@ -67,6 +71,7 @@ case $input in
 esac
 
 read -r -p $'\nInstall Spotify? [Y/n] ' input
+input=${input:-Y}
 case $input in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling Spotify\033[0m\n"    
@@ -82,6 +87,7 @@ case $input in
 esac
 
 read -r -p $'\nInstall VSCode? [Y/n] ' input
+input=${input:-Y}
 case $input in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling VSCode\033[0m\n"    
@@ -97,6 +103,7 @@ case $input in
 esac
 
 read -r -p $'\nInstall Postman? [Y/n] ' input
+input=${input:-Y}
 case $input in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling Postman\033[0m\n"    
@@ -112,6 +119,7 @@ case $input in
 esac
 
 read -r -p $'\nInstall MongoDB? [Y/n] ' input
+input=${input:-Y}
 case $input in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling MongoDB\033[0m\n"    
@@ -133,6 +141,7 @@ case $input in
 esac
 
 read -r -p $'\nInstall NodeJS? [Y/n] ' input
+input=${input:-Y}
 case $input in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling NodeJS\033[0m\n"    
@@ -150,6 +159,7 @@ case $input in
 esac
 
 read -r -p $'\nInstall VLC? [Y/n] ' input
+input=${input:-Y}
 case $input in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling VLC\033[0m\n"    
@@ -165,6 +175,7 @@ case $input in
 esac
 
 read -r -p $'\nInstall Terminator? [Y/n] ' input
+input=${input:-Y}
 case $input in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling Terminator\033[0m\n"    
