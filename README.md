@@ -40,6 +40,7 @@ bash essentials.sh
 - NodeJS
 - VLC
 - Terminator
+- Docker-ce
 
 See your essential package missing? Open an [issue](https://github.com/bhumijgupta/Install-Essentials/issues/new) or just send a pull request.
 
