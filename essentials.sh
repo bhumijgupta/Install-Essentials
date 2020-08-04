@@ -1,7 +1,21 @@
 printf "\n\033[0;32mUpdating Package List\033[0m\n" 
 sudo apt update -y
-printf "\n\033[0;32mUpgrading Packages\033[0m\n"
-sudo apt upgrade -y
+
+read -r -p $'\nUpgrade existing packages? [Y/n] ' input
+input=${input:-Y}
+case $input in
+    [yY][eE][sS]|[yY])
+    printf "\n\033[0;32mUpgrading Packages\033[0m\n"
+    sudo apt install git -y
+        ;;
+    [nN][oO]|[nN])
+    printf "\n\033[0;37m Skipping package updation\033[0m\n"
+       ;;
+    *)
+ printf "\n\033[0;31mInvalid input...\033[0m\n"
+ exit 1
+ ;;
+esac
 
 read -r -p $'\nInstall git? [Y/n] ' input
 input=${input:-Y}
