@@ -203,6 +203,32 @@ case $input in
  exit 1
  ;;
 esac
+
+# https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
+read -r -p $'\nInstall Docker? [Y/n] ' input
+input=${input:-Y}
+case $input in
+    [yY][eE][sS]|[yY])
+    printf "\n\033[0;32mInstalling Docker\033[0m\n"  
+    # Get ubuntu version name  
+    ubuntu_version=$(lsb_release -a 2>/dev/null| grep Codename | cut -f2 | awk '{print tolower($0)}')
+    # Install prequisites
+    sudo apt install apt-transport-https ca-certificates curl software-properties-common
+    # add official gpg key
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    # add docker-ce repository based on ubuntu version
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $ubuntu_version stable"
+    sudo apt update
+    # install docker-ce
+    sudo apt install docker-ce -y
+        ;;
+    [nN][oO]|[nN])
+    printf "\n\033[0;37m Skipping Docker\033[0m\n"
+       ;;
+    *)
+ printf "\n\033[0;31mInvalid input...\033[0m\n"
+ exit 1
+ ;;
+esac
+
 # google-chrome https://www.mongodb.com/download-center/compass?jmp=docs
-
-
