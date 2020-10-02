@@ -50,6 +50,10 @@ See your essential package missing? Open an [issue](https://github.com/bhumijgup
 
 This library is licensed under MIT License. The license file can be found [here](LICENSE)
 
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/bhumijgupta/Install-Essentials.svg)](https://starchart.cc/bhumijgupta/Install-Essentials)
+
 ## Author
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
