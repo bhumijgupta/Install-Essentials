@@ -1,3 +1,5 @@
+#!/bin/bash
+
 printf "\n\033[0;32mUpdating Package List\033[0m\n" 
 sudo apt update -y
 
@@ -106,7 +108,24 @@ case $input in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling VSCode\033[0m\n"    
     sudo snap install --classic code
-        ;;
+    read -r -p $'\nInstall VSCode recommended extensions ? [Y/n] ' input
+    input=${input:-Y}
+    case $input in
+        [yY][eE][sS]|[yY])
+        printf "\n\033[0;32mInstalling extensions\033[0m\n"    
+        code --install-extension christian-kohler.path-intellisense --user-data-dir="~/.vscode-root"
+        code --install-extension CoenraadS.bracket-pair-colorizer --user-data-dir="~/.vscode-root"
+        code --install-extension esbenp.prettier-vscode --user-data-dir="~/.vscode-root"
+            ;;
+        [nN][oO]|[nN])
+        printf "\n\033[0;37m Skipping extensions\033[0m\n"
+            ;;
+        *)
+    printf "\n\033[0;31mInvalid input...\033[0m\n"
+    exit 1
+    ;;
+    esac    
+       ;;
     [nN][oO]|[nN])
     printf "\n\033[0;37m Skipping VSCode\033[0m\n"
        ;;
