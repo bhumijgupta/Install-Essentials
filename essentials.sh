@@ -1,11 +1,65 @@
 #!/bin/bash
 
+APT_GET_DIR=$(which apt-get)
+
+# ***************
+# Check Compatibility 
+# ***************
+printf "\n\033[0;32mChecking Compatibility\033[0m\n"
+if [ -z "$APT_GET_DIR" ]; then
+    printf "\033[0;31mCompatibility check failed. Cannot find apt-get\033[0m\n"
+    printf "\033[0;31mExiting\033[0m\n"
+    exit 1
+else
+    printf "\033[0;32mCompatibilty check passed\033[0m\n"
+fi
+
+# ***************
+# Ask permissions 
+# ***************
+read -r -p 'Upgrade existing packages? [Y/n] ' upgrade_packages
+upgrade_packages=${upgrade_packages:-Y}
+
+read -r -p 'Install git? [Y/n] ' install_git
+install_git=${install_git:-Y}
+
+read -r -p 'Install pip for python 3? [Y/n] ' install_pip3
+install_pip3=${install_pip3:-Y}
+
+read -r -p 'Install C/C++ compiler? [Y/n] ' install_gcc
+install_gcc=${install_gcc:-Y}
+
+read -r -p 'Install Chrome? [Y/n] ' install_chrome
+install_chrome=${install_chrome:-Y}
+
+read -r -p 'Install Spotify? [Y/n] ' install_spotify
+install_spotify=${install_spotify:-Y}
+
+read -r -p 'Install VSCode? [Y/n] ' install_code
+install_code=${install_code:-Y}
+
+read -r -p 'Install Postman? [Y/n] ' install_postman
+install_postman=${install_postman:-Y}
+
+read -r -p 'Install MongoDB? [Y/n] ' install_mongodb
+install_mongodb=${install_mongodb:-Y}
+
+read -r -p 'Install NodeJS? [Y/n] ' install_nodejs
+install_nodejs=${install_nodejs:-Y}
+
+read -r -p 'Install VLC? [Y/n] ' install_vlc
+install_vlc=${install_vlc:-Y}
+
+read -r -p 'Install Terminator? [Y/n] ' install_terminator
+install_terminator=${install_terminator:-Y}
+
+read -r -p 'Install Docker? [Y/n] ' install_docker
+install_docker=${install_docker:-Y}
+
 printf "\n\033[0;32mUpdating Package List\033[0m\n" 
 sudo apt update -y
 
-read -r -p $'\nUpgrade existing packages? [Y/n] ' input
-input=${input:-Y}
-case $input in
+case $upgrade_packages in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mUpgrading Packages\033[0m\n"
     sudo apt install git -y
@@ -19,9 +73,7 @@ case $input in
  ;;
 esac
 
-read -r -p $'\nInstall git? [Y/n] ' input
-input=${input:-Y}
-case $input in
+case $install_git in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling git\033[0m\n"
     sudo apt install git -y
@@ -35,9 +87,7 @@ case $input in
  ;;
 esac
 
-read -r -p $'\nInstall pip for python 3? [Y/n] ' input
-input=${input:-Y}
-case $input in
+case $install_pip3 in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling pip3\033[0m\n"
     sudo apt install python3-pip -y
@@ -51,9 +101,7 @@ case $input in
  ;;
 esac
 
-read -r -p $'\nInstall C/C++ compiler? [Y/n] ' input
-input=${input:-Y}
-case $input in
+case $install_gcc in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling C/C++ compiler\033[0m\n"    
     sudo apt install build-essential manpages-dev -y
@@ -67,9 +115,7 @@ case $input in
  ;;
 esac
 
-read -r -p $'\nInstall Chrome? [Y/n] ' input
-input=${input:-Y}
-case $input in
+case $install_chrome in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling Chrome\033[0m\n"    
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -86,9 +132,7 @@ case $input in
  ;;
 esac
 
-read -r -p $'\nInstall Spotify? [Y/n] ' input
-input=${input:-Y}
-case $input in
+case $install_spotify in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling Spotify\033[0m\n"    
     sudo snap install spotify
@@ -102,9 +146,7 @@ case $input in
  ;;
 esac
 
-read -r -p $'\nInstall VSCode? [Y/n] ' input
-input=${input:-Y}
-case $input in
+case $install_code in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling VSCode\033[0m\n"    
     sudo snap install --classic code
@@ -135,9 +177,7 @@ case $input in
  ;;
 esac
 
-read -r -p $'\nInstall Postman? [Y/n] ' input
-input=${input:-Y}
-case $input in
+case $install_postman in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling Postman\033[0m\n"    
     sudo snap install postman
@@ -151,9 +191,7 @@ case $input in
  ;;
 esac
 
-read -r -p $'\nInstall MongoDB? [Y/n] ' input
-input=${input:-Y}
-case $input in
+case $install_mongodb in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling MongoDB\033[0m\n"    
     sudo apt-get install gnupg -y
@@ -173,9 +211,7 @@ case $input in
  ;;
 esac
 
-read -r -p $'\nInstall NodeJS? [Y/n] ' input
-input=${input:-Y}
-case $input in
+case $install_nodejs in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling NodeJS\033[0m\n"    
     sudo apt install curl -y
@@ -191,9 +227,7 @@ case $input in
  ;;
 esac
 
-read -r -p $'\nInstall VLC? [Y/n] ' input
-input=${input:-Y}
-case $input in
+case $install_vlc in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling VLC\033[0m\n"    
     sudo snap install vlc
@@ -207,9 +241,7 @@ case $input in
  ;;
 esac
 
-read -r -p $'\nInstall Terminator? [Y/n] ' input
-input=${input:-Y}
-case $input in
+case $install_terminator in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling Terminator\033[0m\n"    
     sudo apt-get install terminator -y
@@ -224,9 +256,7 @@ case $input in
 esac
 
 # https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
-read -r -p $'\nInstall Docker? [Y/n] ' input
-input=${input:-Y}
-case $input in
+case $install_docker in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling Docker\033[0m\n"  
     # Get ubuntu version name  
