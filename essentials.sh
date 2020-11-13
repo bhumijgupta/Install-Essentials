@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# This script helps in installing the essential installation packages
+# for majorly Ubuntu systems
+#
+# Download using curl: 
+#     $ curl -fsSL https://bit.ly/ubuntu-essentials -o essentials.sh
+#
+# Download using wget:
+#     $ wget https://raw.githubusercontent.com/bhumijgupta/Install-Essentials/master/essentials.sh
+#
+# Running the script:
+#     $ bash essentials.sh
+
 APT_GET_DIR=$(which apt-get)
 
 # ***************
