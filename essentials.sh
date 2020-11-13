@@ -13,6 +13,7 @@
 #     $ bash essentials.sh
 
 APT_GET_DIR=$(which apt-get)
+sudo true
 
 # ***************
 # Check Compatibility 
@@ -67,6 +68,9 @@ install_terminator=${install_terminator:-Y}
 
 read -r -p 'Install Docker? [Y/n] ' install_docker
 install_docker=${install_docker:-Y}
+
+read -r -p 'Install Docker Compose? [Y/n] ' install_docker_compose
+install_docker_compose=${install_docker_compose:-Y}
 
 printf "\n\033[0;32mUpdating Package List\033[0m\n" 
 sudo apt update -y
@@ -267,25 +271,36 @@ case $install_terminator in
  ;;
 esac
 
-# https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
 case $install_docker in
     [yY][eE][sS]|[yY])
     printf "\n\033[0;32mInstalling Docker\033[0m\n"  
-    # Get ubuntu version name  
-    ubuntu_version=$(lsb_release -a 2>/dev/null| grep Codename | cut -f2 | awk '{print tolower($0)}')
-    # Install prequisites
-    sudo apt install apt-transport-https ca-certificates curl software-properties-common
-    # add official gpg key
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    # add docker-ce repository based on ubuntu version
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $ubuntu_version stable"
-    sudo apt update
-    # install docker-ce
-    sudo apt install docker-ce -y
+    curl -fsSL https://get.docker.com -o get-docker.sh
+    sh get-docker.sh
+    sudo usermod -aG docker "$USER"
+    printf "\n\033[0;32mTo use Docker as a non-root user, you will have to log out and back in.\033[0m\n"
+    rm get-docker.sh
         ;;
     [nN][oO]|[nN])
     printf "\n\033[0;37m Skipping Docker\033[0m\n"
        ;;
+    *)
+ printf "\n\033[0;31mInvalid input...\033[0m\n"
+ exit 1
+ ;;
+esac
+
+case $install_docker_compose in
+    [yY][eE][sS]|[yY])
+    printf "\n\033[0;32mInstalling Docker Compose\033[0m\n" 
+    # source: https://gist.github.com/wdullaer/f1af16bd7e970389bad3 
+    COMPOSE_VERSION=$(git ls-remote https://github.com/docker/compose | grep refs/tags | grep -oE "[0-9]+\.[0-9][0-9]+\.[0-9]+$" | sort --version-sort | tail -n 1)
+    sudo curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+    sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
+        ;;
+    [nN][oO]|[nN])
+    printf "\n\033[0;37m Skipping Docker Compose\033[0m\n"
+        ;;
     *)
  printf "\n\033[0;31mInvalid input...\033[0m\n"
  exit 1
