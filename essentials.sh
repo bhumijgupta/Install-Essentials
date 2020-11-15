@@ -240,8 +240,9 @@ case $install_mongodb in
     [yY][eE][sS]|[yY])
     print_colored "Installing MongoDB" "success"
     sudo apt-get install gnupg -y
-    wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
-    printf "\ndeb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+    # TODO: find a way to stay at latest version
+    wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+    printf "\ndeb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
     sudo apt-get update
     sudo apt-get install -y mongodb-org
     print_colored "Starting MongoDB" "info"
@@ -260,6 +261,7 @@ case $install_nodejs in
     [yY][eE][sS]|[yY])
     print_colored "Installing NodeJS" "success"
     sudo apt install curl -y
+    # TODO: find a way to stay at latest version
     curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
     sudo apt install nodejs -y
         ;;
