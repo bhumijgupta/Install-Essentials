@@ -41,6 +41,7 @@ bash essentials.sh
 - VLC
 - Terminator
 - Docker-ce
+- Docker Compose
 
 See your essential package missing? Open an [issue](https://github.com/bhumijgupta/Install-Essentials/issues/new) or just send a pull request.
 
