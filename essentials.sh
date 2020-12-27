@@ -11,10 +11,11 @@
 #
 # Running the script:
 #     $ bash essentials.sh
-
-APT_GET_DIR=$(which apt-get)
-sudo true
-
+# 
+# Supported command line arguments
+# --cli     Show only CLI packages
+# help    Show help message
+#
 
 # ***************
 # Utils 
@@ -40,9 +41,26 @@ print_colored() {
     printf "${COLOR}%b${NO_COLOR}\n" "$1"
 }
 
+show_help() {
+    print_colored "Invalid command-line argument" "danger"
+    print_colored "You can pass --cli flag to view only cli packages" "info"
+    exit 1
+}
+
 invalid_input(){
     print_colored "Invalid input..." "danger"
 }
+
+
+APT_GET_DIR=$(which apt-get)
+ONLY_CLI=false
+if [ "$1" == "--cli" ]; then
+ ONLY_CLI=true
+fi
+if [ "$#" -gt 1 ] || [ "$1" != "--cli" ]; then
+ show_help
+fi
+sudo true
 
 # ***************
 # Check Compatibility 
@@ -71,16 +89,32 @@ install_pip3=${install_pip3:-Y}
 read -r -p $'\nInstall C/C++ compiler? [Y/n] ' install_gcc
 install_gcc=${install_gcc:-Y}
 
-read -r -p $'\nInstall Chrome? [Y/n] ' install_chrome
+if [ "$ONLY_CLI" == false ]; then
+    read -r -p $'\nInstall Chrome? [Y/n] ' install_chrome
+else
+    install_chrome=n
+fi
 install_chrome=${install_chrome:-Y}
 
-read -r -p $'\nInstall Spotify? [Y/n] ' install_spotify
+if [ "$ONLY_CLI" == false ]; then
+    read -r -p $'\nInstall Spotify? [Y/n] ' install_spotify
+else
+    install_spotify=n
+fi
 install_spotify=${install_spotify:-Y}
 
-read -r -p $'\nInstall VSCode? [Y/n] ' install_code
+if [ "$ONLY_CLI" == false ]; then
+    read -r -p $'\nInstall VSCode? [Y/n] ' install_code
+else
+    install_code=n
+fi
 install_code=${install_code:-Y}
 
-read -r -p $'\nInstall Postman? [Y/n] ' install_postman
+if [ "$ONLY_CLI" == false ]; then
+    read -r -p $'\nInstall Postman? [Y/n] ' install_postman
+else
+    install_postman=n
+fi
 install_postman=${install_postman:-Y}
 
 read -r -p $'\nInstall MongoDB? [Y/n] ' install_mongodb
@@ -89,7 +123,11 @@ install_mongodb=${install_mongodb:-Y}
 read -r -p $'\nInstall NodeJS? [Y/n] ' install_nodejs
 install_nodejs=${install_nodejs:-Y}
 
-read -r -p $'\nInstall VLC? [Y/n] ' install_vlc
+if [ "$ONLY_CLI" == false ]; then
+    read -r -p $'\nInstall VLC? [Y/n] ' install_vlc
+else
+    install_vlc=n
+fi
 install_vlc=${install_vlc:-Y}
 
 read -r -p $'\nInstall Terminator? [Y/n] ' install_terminator

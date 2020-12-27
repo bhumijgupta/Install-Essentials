@@ -27,6 +27,16 @@ wget https://raw.githubusercontent.com/bhumijgupta/Install-Essentials/master/ess
 bash essentials.sh
 ```
 
+## Supported command line arguments
+
+```
+--cli   Show only command line packages
+help    Show help message
+
+Usage:
+    bash essentials.sh --cli
+```
+
 ## Packages supported
 
 - Git
